@@ -3,6 +3,7 @@
 ## 1. Find a specific argument
 
 Code:
+
 ```
 #include <stdio.h>
 #include "arglib.h"
@@ -35,15 +36,16 @@ int main(int argc, char *argv[]) {
 ```
 
 Output:
-> ./example1 --long common -eat -b
-> Short argument (arg_find_short): -eat
-> Short argument (arg_find_short_one): -b
-> Long argument: --long
+> ./example1 --long common -eat -b  
+> Short argument (arg_find_short): -eat  
+> Short argument (arg_find_short_one): -b  
+> Long argument: --long  
 > Common argument: common
 
 ## 2. Find an argument following another one
 
 Code:
+
 ```
 #include <stdio.h>
 #include "arglib.h"
@@ -64,15 +66,16 @@ int main(int argc, char *argv[]) {
 ```
 
 Output:
-> ./example2 hello --followed my name is --paly2
-> Long argument: --followed
-> Followed by common argument: my
-> Followed by common argument: name
+> ./example2 hello --followed my name is --paly2  
+> Long argument: --followed  
+> Followed by common argument: my  
+> Followed by common argument: name  
 > Followed by common argument: is
 
 ## 3. Find a file path argument
 
 Code:
+
 ```
 #include <stdio.h>
 #include "arglib.h"
@@ -100,26 +103,27 @@ int main(int argc, char *argv[]) {
 ```
 
 Output, if `folder` and `folder/file.txt` exist:
-> ./example3 folder folder/file.txt
-> First file path: folder/file.txt
-> First directory path: folder
+> ./example3 folder folder/file.txt  
+> First file path: folder/file.txt  
+> First directory path: folder  
 > First file/directory path: folder
 
 Output, if `folder` exists but `folder/file.txt` doesn't exist:
-> ./example3 folder folder/file.txt
-> No file path.
-> First directory path: folder
+> ./example3 folder folder/file.txt  
+> No file path.  
+> First directory path: folder  
 > First file/directory path: folder
 
 Output, if `folder` and `folder/file.txt` don't exist:
-> ./example3 folder folder/file.txt
-> No file path.
-> No directory path.
+> ./example3 folder folder/file.txt  
+> No file path.  
+> No directory path.  
 > No path.
 
 ## 4. Know if an argument is short, long, common, a path...
 
 Code:
+
 ```
 #include <stdio.h>
 #include "arglib.h"
@@ -140,7 +144,7 @@ int main(int argc, char *argv[]) {
 ```
 
 Output (if `file1.txt` and `file2.png` exist):
-> ./example4 --ThisIsAVeryLongArgument file1.txt file2.png
-> The first argument is not a short argument.
-> file1.txt is a file path.
+> ./example4 --ThisIsAVeryLongArgument file1.txt file2.png  
+> The first argument is not a short argument.  
+> file1.txt is a file path.  
 > file2.png is a file path.

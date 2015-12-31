@@ -3,7 +3,7 @@
 In this file :  
 A "long argument" is an argument prefixed by "--" and described by many characters.  
 A "short argument" is an argument prefixed by "-" and described by only one chacter.  
-A "common argument" is an argument wich is neither a long argument, nor a short argument.  
+A "common argument" is an argument wich is neither a long argument, nor a short argument. Note a common argument can be a file path.  
 A "file path argument" is an argument wich specifies a file/directory path.
 
 Every chapter of this file has an example of the `examples.md` file.
@@ -13,7 +13,10 @@ Every chapter of this file has an example of the `examples.md` file.
 ### 1.1. Find a long argument
 
 To know if a long argument is passed to the program, you can use the function :
-    char* arg_find_long(char *argv[], const char *arg);
+
+```
+char* arg_find_long(char *argv[], const char *arg);
+```
 
 * Parameter 1 : argv (strings array), the arguments table.
 * Parameter 2 : arg (string), the long argument.
@@ -22,7 +25,10 @@ To know if a long argument is passed to the program, you can use the function :
 ### 1.2. Find a short argument
 
 To know if a short argument is passed to the program, you can use the function :
-	arg_find_short_one(char *argv[], const char arg);
+
+```
+arg_find_short_one(char *argv[], const char arg);
+```
 
 * Parameter 1 : argv (strings array), the arguments table.
 * Parameter 2 : arg (character), the short argument. *Remenber this is just a character and not a string.*
@@ -33,7 +39,10 @@ Note: There can be many short arguments introduced by the same "-". If you want 
 ### 1.3. Find a common argument
 
 To know if a common argument is passed to the program, you can use the function :
-    char* arg_find_common(char *argv[], const char *arg);
+
+```
+char* arg_find_common(char *argv[], const char *arg);
+```
 
 * Parameter 1 : argv (strings array), the arguments table.
 * Parameter 2 : arg (string), the common argument.
@@ -42,7 +51,10 @@ To know if a common argument is passed to the program, you can use the function 
 ## 2. Find an argument following another one
 
 To find an argument wich follows another one, you can use the function :
-    char* arg_followed(char *argv[], char *previous);
+
+```
+char* arg_followed(char *argv[], char *previous);
+```
 
 * Parameter 1 : argv (strings array), the arguments table.
 * Parameter 2 : previous (string), the previous argument. **Please always use the return value of an arg_find_* function for this parameter. If you don't, you may get a segment error.**
@@ -53,7 +65,10 @@ Note: The next argument must always be a common argument.
 ## 3. Find a file path argument
 
 To find a file path argument, you can use the function :
-    char* arg_find_filename(char *argv[], const int flags);
+
+```
+char* arg_find_filename(char *argv[], const int flags);
+```
 
 * Parameter 1 : argv (strings array), the arguments table.
 * Parameter 2 : flags (number made by flags), the kind of path :
@@ -65,7 +80,11 @@ To find a file path argument, you can use the function :
 ## 4. Know if an argument is short, long, common, a path...
 
 Every `arg_find_*` prefixed function has a `arg_is_*` version with this prototype :
-    int arg_is_(short|short_one|long|common)(const char *arg);
-    int arg_is_filename(const char *arg, const int flags);
+
+```
+int arg_is_(short|short_one|long|common)(const char *arg);
+int arg_is_filename(const char *arg, const int flags);
+```
+
 * Parameter 1 : arg (string), the argument.
 * Return value : (boolean), 1 : true, 0 : false
