@@ -4,4 +4,4 @@ ArgLib is a little but useful library wich can help to manipulate program argume
 
 You can put the full files arglib.c and arglib.h in your program directory, or just pick some functions (note: some functions may call others functions, check that if you pick them).
 
-Documentation's comming...
+You can get the documentation with examples in the `doc` directory.
