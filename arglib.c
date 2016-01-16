@@ -105,17 +105,17 @@ char* arg_followed(char *argv[], char *previous) {
 		return NULL;
 }
 
-char* arg_find_filename(char *argv[], const int flags) {
+char* arg_find_pathname(char *argv[], const int flags) {
 	int i;
 	for (i = 1 ; argv[i] != NULL && i < 500 ; i++) {
-		if (arg_is_filename(argv[i], flags))
+		if (arg_is_pathname(argv[i], flags))
 			return argv[i];
 	}
 	
 	return NULL;
 }
 
-int arg_is_filename(const char *arg, const int flags) {
+int arg_is_pathname(const char *arg, const int flags) {
 	if (arg == NULL)
 		return 0;
 	

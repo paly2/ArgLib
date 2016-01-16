@@ -83,17 +83,17 @@ Code:
 int main(int argc, char *argv[]) {
 	char* filename = NULL;
 	
-	if ((filename = arg_find_filename(argv, arg_FILENAME)) != NULL)
+	if ((filename = arg_find_pathname(argv, arg_FILENAME)) != NULL)
 		printf("First file path: %s\n", filename);
 	else
 		printf("No file path.\n");
 	
-	if ((filename = arg_find_filename(argv, arg_DIRNAME)) != NULL)
+	if ((filename = arg_find_pathname(argv, arg_DIRNAME)) != NULL)
 		printf("First directory path: %s\n", filename);
 	else
 		printf("No directory path.\n");
 	
-	if ((filename = arg_find_filename(argv, arg_FILENAME | arg_DIRNAME)) != NULL)
+	if ((filename = arg_find_pathname(argv, arg_FILENAME | arg_DIRNAME)) != NULL)
 		printf("First file/directory path: %s\n", filename);
 	else
 		printf("No path.\n");
@@ -136,7 +136,7 @@ int main(int argc, char *argv[]) {
 		printf("The first argument is not a short argument.\n");
 	
 	for (i = 1 ; i < argc ; i++)
-		if (arg_is_filename(argv[i], arg_FILENAME))
+		if (arg_is_pathname(argv[i], arg_FILENAME))
 			printf("%s is a file path.\n", argv[i]);
 	
 	return 0;

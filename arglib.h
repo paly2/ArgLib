@@ -14,5 +14,5 @@ int arg_is_common(const char *arg);
 
 char* arg_followed(char *argv[], char* previous);
 
-char* arg_find_filename(char *argv[], const int flags);
-int arg_is_filename(const char *arg, const int flags);
+char* arg_find_pathname(char *argv[], const int flags);
+int arg_is_pathname(const char *arg, const int flags);

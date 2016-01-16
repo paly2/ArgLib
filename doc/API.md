@@ -67,7 +67,7 @@ Note: The next argument must always be a common argument.
 To find a file path argument, you can use the function :
 
 ```
-char* arg_find_filename(char *argv[], const int flags);
+char* arg_find_pathname(char *argv[], const int flags);
 ```
 
 * Parameter 1 : argv (strings array), the arguments table.
@@ -83,7 +83,7 @@ Every `arg_find_*` prefixed function has a `arg_is_*` version with this prototyp
 
 ```
 int arg_is_(short|short_one|long|common)(const char *arg);
-int arg_is_filename(const char *arg, const int flags);
+int arg_is_pathname(const char *arg, const int flags);
 ```
 
 * Parameter 1 : arg (string), the argument.
