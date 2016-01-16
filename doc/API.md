@@ -60,6 +60,9 @@ char* arg_find(char *argv[], const char *arg, const arg_kind kind);
 * Parameter 3 : kind (`arg_kind` enum), the kind of the argument (COMMON, SHORT, SHORT_ONE or LONG).
 * Return value : (string), the complete argument where arg was found, or NULL if arg was not found.
 
+Note: You can use the `arg_kind` enum values as flags in the third parameter (for example, `LONG|COMMON` will allow the function to return a long or a common argument.
+Other note: For a short argument, the function uses only the first character of the arg string.
+
 ## 2. Find an argument following another one
 
 To find an argument wich follows another one, you can use the function :
@@ -108,3 +111,5 @@ arg_kind arg_how_is(const char *arg);
 
 * Parameter 1 : arg (string), the argument.
 * Return value : (`arg_kind` enum), the kind of the argument, (COMMON, SHORT, SHORT_ONE, LONG, PATH or ERROR).
+
+Note: If the argument is short but has only one character, the function will return SHORT_ONE. However, if you want to know if the function returns SHORT_ONE or SHORT, you can test `arg_how_is(arg) <= SHORT` instead of `arg_how_is(arg) == SHORT_ONE || arg_how_is(arg) == SHORT` because SHORT and SHORT_ONE are the two smallest values of the enumeration.

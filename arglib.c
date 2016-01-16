@@ -46,14 +46,15 @@ char* arg_find(char *argv[], const char *arg, const arg_kind kind) {
 	if (arg == NULL)
 		return NULL;
 	
-	if (kind == COMMON)
-		return arg_find_common(argv, arg);
-	else if (kind == SHORT_ONE)
-		return arg_find_short_one(argv, arg[0]);
-	else if (kind == SHORT)
-		return arg_find_short(argv, arg[0]);
-	else if ( kind == LONG)
-		return arg_find_long(argv, arg);
+	char* found_arg = NULL;
+	if (kind & COMMON && (found_arg = arg_find_common(argv, arg)) != NULL)
+		return found_arg;
+	else if (kind & SHORT_ONE && (found_arg = arg_find_short_one(argv, arg[0])) != NULL)
+		return found_arg;
+	else if (kind & SHORT && (found_arg = arg_find_short(argv, arg[0])) != NULL)
+		return found_arg;
+	else if (kind & LONG && (found_arg = arg_find_long(argv, arg)) != NULL)
+		return found_arg;
 	else
 		return NULL;
 }

@@ -2,7 +2,8 @@
 #define arg_FILENAME 1
 #define arg_DIRNAME 2
 
-typedef enum {COMMON, SHORT, SHORT_ONE, LONG, PATH, ERROR } arg_kind;
+/* The arg_kind enum. Note that you can use the values as flags for the arg_find function. */
+typedef enum {SHORT_ONE = 1, SHORT = 2, LONG = 4, COMMON = 8, PATH = 16, ERROR = 32} arg_kind;
 
 char* arg_find_short(char *argv[], const char arg);
 char* arg_find_short_one(char *argv[], const char arg);
