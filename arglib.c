@@ -42,6 +42,22 @@ char* arg_find_common(char *argv[], const char *arg) {
 	return NULL;
 }
 
+char* arg_find(char *argv[], const char *arg, const arg_kind kind) {
+	if (arg == NULL)
+		return NULL;
+	
+	if (kind == COMMON)
+		return arg_find_common(argv, arg);
+	else if (kind == SHORT_ONE)
+		return arg_find_short_one(argv, arg[0]);
+	else if (kind == SHORT)
+		return arg_find_short(argv, arg[0]);
+	else if ( kind == LONG)
+		return arg_find_long(argv, arg);
+	else
+		return NULL;
+}
+
 int arg_is_short(const char *arg) {
 	if (arg == NULL)
 		return 0;
@@ -86,6 +102,21 @@ int arg_is_common(const char *arg) {
 		return 1;
 	else
 		return 0;
+}
+
+arg_kind arg_how_is(const char *arg) {
+	if (arg_is_pathname(arg, arg_FILENAME | arg_DIRNAME))
+		return PATH;
+	else if (arg_is_common(arg))
+		return COMMON;
+	else if (arg_is_short_one(arg))
+		return SHORT_ONE;
+	else if (arg_is_short(arg))
+		return SHORT;
+	else if (arg_is_long(arg))
+		return LONG;
+	else
+		return ERROR;
 }
 
 char* arg_followed(char *argv[], char *previous) {

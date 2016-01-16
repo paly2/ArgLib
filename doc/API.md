@@ -48,6 +48,18 @@ char* arg_find_common(char *argv[], const char *arg);
 * Parameter 2 : arg (string), the common argument.
 * Return value : (string), the complete argument where arg was found, or NULL if arg was not found.
 
+### 1.4. These functions are now deprecated !
+
+You should use the function :
+```
+char* arg_find(char *argv[], const char *arg, const arg_kind kind);
+```
+
+* Parameter 1 : argv (strings array), the arguments table.
+* Parameter 2 : arg (string), the argument.
+* Parameter 3 : kind (`arg_kind` enum), the kind of the argument (COMMON, SHORT, SHORT_ONE or LONG).
+* Return value : (string), the complete argument where arg was found, or NULL if arg was not found.
+
 ## 2. Find an argument following another one
 
 To find an argument wich follows another one, you can use the function :
@@ -57,7 +69,7 @@ char* arg_followed(char *argv[], char *previous);
 ```
 
 * Parameter 1 : argv (strings array), the arguments table.
-* Parameter 2 : previous (string), the previous argument. **Please always use the return value of an arg_find_* function for this parameter. If you don't, you may get a segment error.**
+* Parameter 2 : previous (string), the previous argument. **Please always use the return value of an arg_find* function for this parameter. If you don't, you may get a segment error.**
 * Return value : (string), the next argument, or NULL if it was not found.
 
 Note: The next argument must always be a common argument.
@@ -88,3 +100,11 @@ int arg_is_pathname(const char *arg, const int flags);
 
 * Parameter 1 : arg (string), the argument.
 * Return value : (boolean), 1 : true, 0 : false
+
+However, these functions are now deprecated and you should use the function :
+```
+arg_kind arg_how_is(const char *arg);
+```
+
+* Parameter 1 : arg (string), the argument.
+* Return value : (`arg_kind` enum), the kind of the argument, (COMMON, SHORT, SHORT_ONE, LONG, PATH or ERROR).
