@@ -3,14 +3,14 @@
 In this file :  
 A "long argument" is an argument prefixed by "--" and described by many characters.  
 A "short argument" is an argument prefixed by "-" and described by only one chacter.  
-A "common argument" is an argument wich is neither a long argument, nor a short argument. Note a common argument can be a file path.  
-A "file path argument" is an argument wich specifies a file/directory path.
+A "common argument" is an argument which is neither a long argument, nor a short argument. Note a common argument can be a file path.  
+A "file path argument" is an argument which specifies a file/directory path.
 
 Every chapter of this file has an example of the `examples.md` file.
 
-## 1. Find a specific argument
+## 1. To find a specific argument
 
-### 1.1. Find a long argument
+### 1.1. To find a long argument
 
 To know if a long argument is passed to the program, you can use the function :
 
@@ -22,7 +22,7 @@ char* arg_find_long(char *argv[], const char *arg);
 * Parameter 2 : arg (string), the long argument.
 * Return value : (string), the complete argument where arg was found, or NULL if arg was not found.
 
-### 1.2. Find a short argument
+### 1.2. To find a short argument
 
 To know if a short argument is passed to the program, you can use the function :
 
@@ -36,7 +36,7 @@ arg_find_short_one(char *argv[], const char arg);
 
 Note: There can be many short arguments introduced by the same "-". If you want not, use the `arg_find_short_one` function instead.
 
-### 1.3. Find a common argument
+### 1.3. To find a common argument
 
 To know if a common argument is passed to the program, you can use the function :
 
@@ -48,7 +48,7 @@ char* arg_find_common(char *argv[], const char *arg);
 * Parameter 2 : arg (string), the common argument.
 * Return value : (string), the complete argument where arg was found, or NULL if arg was not found.
 
-### 1.4. These functions are now deprecated !
+### 1.4. These functions are deprecated !
 
 You should use the function :
 ```
@@ -63,7 +63,7 @@ char* arg_find(char *argv[], const char *arg, const arg_kind kind);
 Note: You can use the `arg_kind` enum values as flags in the third parameter (for example, `LONG|COMMON` will allow the function to return a long or a common argument.
 Other note: For a short argument, the function uses only the first character of the arg string.
 
-## 2. Find an argument following another one
+## 2. To find an argument following another one
 
 To find an argument wich follows another one, you can use the function :
 
@@ -77,7 +77,7 @@ char* arg_followed(char *argv[], char *previous);
 
 Note: The next argument must always be a common argument.
 
-## 3. Find a file path argument
+## 3. To find a file path argument
 
 To find a file path argument, you can use the function :
 
@@ -92,7 +92,7 @@ char* arg_find_pathname(char *argv[], const int flags);
  * you can mix the flags like this : `arg_FILENAME | arg_DIRNAME` : the path is either a file path, or a directory path.
 * Return value : (string), the first path found, or NULL if no path was found.
 
-## 4. Know if an argument is short, long, common, a path...
+## 4. To know if an argument is short, long, common, a path...
 
 Every `arg_find_*` prefixed function has a `arg_is_*` version with this prototype :
 
